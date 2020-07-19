@@ -1,0 +1,22 @@
+import time
+
+import board
+import touchio
+import neopixel
+
+# touch_pad = board.A0  # Will not work for Circuit Playground Express!
+touch_pad = board.A1  # For Circuit Playground Express
+
+led = neopixel.NeoPixel(board.NEOPIXEL, 3, brightness=0.2)
+
+touch = touchio.TouchIn(touch_pad)
+
+while True:
+    if touch.value:
+        led[0] = (255, 0, 0)
+        time.sleep(0.5)
+        led[1] = (0, 255, 0)
+        time.sleep(0.5)
+        led[2] = (0, 0, 255)
+        time.sleep(0.5)
+    time.sleep(0.5)
